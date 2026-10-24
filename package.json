@@ -1,0 +1,14 @@
+{
+  "name": "task-api",
+  "version": "1.0.0",
+  "description": "Simple Task Manager REST API with JWT auth, used for Postman API testing",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
