@@ -1,0 +1,25 @@
+$kind: http-request
+url: "{{baseUrl}}/tasks/{{taskId}}"
+method: PATCH
+body:
+  type: json
+  content: '{"status":"done"}'
+auth:
+  type: bearer
+  credentials:
+    token: "{{token}}"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \  pm.response.to.have.status(200);\r
+
+      });\r
+
+      pm.test(\"Response time is below 2 seconds\", function () {\r
+
+      \  pm.expect(pm.response.responseTime).to.be.below(2000);\r
+
+      });"
+    language: text/javascript
+order: 2000

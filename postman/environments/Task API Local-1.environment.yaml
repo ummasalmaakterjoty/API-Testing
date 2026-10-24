@@ -1,0 +1,12 @@
+name: Task API Local
+values:
+  - key: baseUrl
+    value: ''
+  - key: token
+    value: ''
+  - key: token2
+    value: ''
+  - key: adminToken
+    value: ''
+  - key: taskId
+    value: ''

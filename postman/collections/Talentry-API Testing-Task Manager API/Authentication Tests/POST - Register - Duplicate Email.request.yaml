@@ -1,0 +1,21 @@
+$kind: http-request
+url: "{{baseUrl}}/auth/register"
+method: POST
+body:
+  type: json
+  content: '{"name":"Joty","email":"joty@test.com","password":"Test1234"}'
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 409\", function () {\r
+
+      \  pm.response.to.have.status(409);\r
+
+      });\r
+
+      pm.test(\"Error message is returned\", function () {\r
+
+      \  pm.expect(pm.response.json()).to.have.property(\"message\");\r
+
+      });"
+    language: text/javascript
+order: 7000

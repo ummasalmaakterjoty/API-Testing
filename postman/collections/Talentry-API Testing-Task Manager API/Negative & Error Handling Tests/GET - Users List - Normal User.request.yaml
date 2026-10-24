@@ -1,0 +1,25 @@
+$kind: http-request
+url: "{{baseUrl}}/users"
+method: GET
+body:
+  type: json
+  content: ""
+auth:
+  type: bearer
+  credentials:
+    token: "{{token}}"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 403\", function () {\r
+
+      \  pm.response.to.have.status(403);\r
+
+      });\r
+
+      pm.test(\"Error message is returned\", function () {\r
+
+      \  pm.expect(pm.response.json()).to.have.property(\"message\");\r
+
+      });"
+    language: text/javascript
+order: 4000

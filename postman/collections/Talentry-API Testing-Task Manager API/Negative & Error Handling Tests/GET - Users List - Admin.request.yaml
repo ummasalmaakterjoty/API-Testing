@@ -1,0 +1,19 @@
+$kind: http-request
+url: "{{baseUrl}}/users"
+method: GET
+body:
+  type: json
+  content: ""
+auth:
+  type: bearer
+  credentials:
+    token: "{{adminToken}}"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Passwords are not exposed\", function () {\r
+
+      \  pm.expect(pm.response.text()).to.not.include(\"password\");\r
+
+      });"
+    language: text/javascript
+order: 5000

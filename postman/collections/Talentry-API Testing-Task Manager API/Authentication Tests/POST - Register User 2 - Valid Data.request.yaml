@@ -1,0 +1,21 @@
+$kind: http-request
+url: "{{baseUrl}}/auth/register"
+method: POST
+body:
+  type: json
+  content: '{"name":"Second User","email":"user2@test.com","password":"Test1234"}'
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 201\", function () {\r
+
+      \  pm.response.to.have.status(201);\r
+
+      });\r
+
+      pm.test(\"Response time is below 2 seconds\", function () {\r
+
+      \  pm.expect(pm.response.responseTime).to.be.below(2000);\r
+
+      });"
+    language: text/javascript
+order: 2000
